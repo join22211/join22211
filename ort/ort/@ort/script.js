@@ -316,4 +316,25 @@ function copyStreamLink() {
       alert('Failed to copy link. Please try manually.');
     });
 }
+document.addEventListener("DOMContentLoaded", function () {
+            // Snowflake generator
+            const snowflakesContainer = document.getElementById('snowflakes-container');
 
+            function createSnowflake() {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = '•';
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // Between 5 and 10 seconds
+                snowflake.style.fontSize = `${Math.random() * 10 + 10}px`; // Between 10px and 20px
+
+                snowflakesContainer.appendChild(snowflake);
+
+                // Remove snowflake after it falls
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 10000);
+            }
+
+            setInterval(createSnowflake, 300); // Generate a snowflake every 300ms
+        });
